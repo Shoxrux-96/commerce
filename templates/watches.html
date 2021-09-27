@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <!-- shop section -->
+  <section class="shop_section layout_padding">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>Latest Watches</h2>
+      </div>
+      <div class="row">
+      {% for orders in order %}
+        <div class="col-sm-6 col-xl-3">
+        <div class="box">
+            <a href="">
+            <div class="img-box">
+                <img src="{{orders.image.url}}" alt="">
+            </div>
+            <div class="detail-box">
+                <h6>{{orders.name}}</h6>
+                {% comment %} <p>{{items.get_category_display}}</p> {% endcomment %}
+                <h6>Price:$<span>{{orders.price}}</span>
+                </h6>
+            </div>
+            <div class="new {{orders.get_label_display}}-color">
+                <span>{{orders.condition}}</span>
+            </div>
+            </a>
+        </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="heading_container heading_center mt-3">
+        <h2>Latest Phone</h2>
+      </div>
+      <div class="row">
+              {% comment %} <div class="detail-box {{orders.get_label_display}}-color">
+                <span>{{orders.get_category_display}}</span> {% endcomment %}           
+    </div>
+  </section>
+
+  <!-- end shop section -->
+{% endblock %}
+{% include 'footer.html' %}
